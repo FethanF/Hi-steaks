@@ -27,21 +27,17 @@ function _update()
 		player.x += player.speed
 		player.fx = false
 		player.sp = 1
-		button = "right"
 	end
 	if btn(⬅️) then
 		player.x -= player.speed
 		player.fx = true
 		player.sp = 1
-		button = "left"
 	end
 	-- y movement --
 	if btn(⬆️) then
 		player.y -= player.speed
-		button = "up"
 	end
 	if btn(⬇️) then
-		button = "down"
 		if player.y + player.speed > lowlimit then
 			player.y = lowlimit
 			altitude_flag = true

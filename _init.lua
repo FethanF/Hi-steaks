@@ -1,20 +1,24 @@
 function _init()
 	printh('start of game')
-
+	-- seconds since pico-8 was started
 	starttime = time()
 
+	-- seconds since game start
 	gametime = 0
 
-	button = ""
-
+	-- the lowest point the ufo can go
 	lowlimit = 80
 
+	-- flag that you cant go lower
 	altitude_flag = false
 
+	--how many cows have you sucked the spots out of
 	score = 0
 
+	--half the width of the abduction beam
 	beam_half_width = 8
 
+	--is the beam currently on
 	beam_on = false
 
 	player = {
