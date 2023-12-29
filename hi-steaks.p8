@@ -1,6 +1,8 @@
 pico-8 cartridge // http://www.pico-8.com
 version 41
 __lua__
+--hi-steaks
+--fETHANf
 
 --main
 #include _update.lua
