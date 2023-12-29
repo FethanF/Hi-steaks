@@ -23,7 +23,7 @@ function _init()
 
 	player = {
 		health = 3,
-		speed = 1,
+		speed = 1.5,
 		x = 63,
 		y = 63,
 		fx = false,

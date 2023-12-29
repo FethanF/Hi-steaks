@@ -1,7 +1,7 @@
 previous_update_time = 0
 cow_abduction_speed = 0.4
 cow_lerp_speed = 0.05
-cow_fall_speed = 0.4
+cow_fall_speed = 0.5
 cow_spawn_height = 100
 
 function create_cow()
