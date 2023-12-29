@@ -1,4 +1,4 @@
-farmer_abduction_speed = 0.4
+farmer_abduction_speed = 0.5
 farmer_lerp_speed = 0.05
 farmer_fall_speed = 0.4
 farmer_spawn_height = 100
