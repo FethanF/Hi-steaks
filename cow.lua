@@ -30,8 +30,8 @@ function update_cow(cow)
 		cow.fy = true
 		cow.y -= cow_abduction_speed
 		cow.x = lerp(cow.x, player.x, cow_lerp_speed)
-		--if cow is same level as player bye bye cow--
-		if cow.y <= player.y + 6 then
+		--if cow is roughly at player height bye bye cow--
+		if cow.y <= player.y + 6 and cow.y >= player.y + 3 then
 			delete_cow(cow)
 			score += 1
 		end
