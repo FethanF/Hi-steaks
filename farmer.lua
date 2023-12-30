@@ -50,7 +50,7 @@ function update_farmer(farmer)
 			farmer.dead = true
 			sfx(00)
 		end
-		if not farmer_dropped then
+		if not farmer_dropped and not farmer.dead then
 			if farmer.next_shoot_time<=gametime then
 				local projectile = create_projectile(farmer.x, farmer.y, player.x+4, player.y+5)
 				projectile.x = farmer.x
