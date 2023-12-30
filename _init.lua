@@ -69,6 +69,11 @@ function _init()
 end
 
 function is_in_beam(object)
-	return object.x < player.x + beam_half_width and object.x > player.x - beam_half_width
+	--if the object is to the left of the right of the beam
+	return object.x < player.x + beam_half_width 
+	--if the object is to the right of the left of the beam
+	and object.x > player.x - beam_half_width
+	--check if object is lower than player
+	and object.y > player.y + 6 
 end
 
