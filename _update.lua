@@ -60,9 +60,12 @@ function _update()
 		update_projectile(projectile)
 	end
 
-	-- idk ethan change this later
+	--game states--
 	if player.health < 1 then
-		printh("u dead bro")
+		game_over = true
+	end
+	if btn(5) and game_over then
+		run()
 	end
 
 	--time--
