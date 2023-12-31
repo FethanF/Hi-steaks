@@ -4,7 +4,7 @@ farmer_fall_speed = 0.4
 farmer_spawn_height = 100
 
 function calc_next_shoot_time()
-	return rnd(3)+2+gametime
+	return rnd(1)+2+gametime
 end
 
 
@@ -15,7 +15,7 @@ function create_farmer()
 		speed = rnd(0.3) + 0.3,
 		fx = false,
 		fy = false,
-		sp = 2,
+		sp = SPR_FARMER,
 		abducted = false,
 		dead = false,
 		next_shoot_time = calc_next_shoot_time(),
@@ -52,11 +52,7 @@ function update_farmer(farmer)
 		end
 		if not farmer_dropped and not farmer.dead then
 			if farmer.next_shoot_time<=gametime then
-				local projectile = create_projectile(farmer.x, farmer.y, player.x+4, player.y+5)
-				projectile.x = farmer.x
-				projectile.y = farmer.y
-				projectile.rise = 0
-				projectile.run = 0
+				local bullet = create_bullet(farmer.x, farmer.y, player.x+CENTRE_OF_PLAYER_OFFSET_X, player.y+CENTRE_OF_PLAYER_OFFSET_Y)
 				farmer.next_shoot_time = calc_next_shoot_time()
 			end
 			farmer_move_normal(farmer)

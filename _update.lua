@@ -1,6 +1,6 @@
 function _update()
 	-- if space is being held --
-	beam_on = btn(5)
+	beam_on = btn(BTN_X)
 	if beam_on then
 		for _, cow in ipairs(cows) do
 			cow.abducted = is_in_beam(cow)
@@ -26,20 +26,18 @@ function _update()
 	if btn(➡️) then
 		player.x += player.speed
 		player.fx = false
-		player.sp = 1
 	end
 	if btn(⬅️) then
 		player.x -= player.speed
 		player.fx = true
-		player.sp = 1
 	end
 	-- y movement --
 	if btn(⬆️) then
 		player.y -= player.speed
 	end
 	if btn(⬇️) then
-		if player.y + player.speed > lowlimit then
-			player.y = lowlimit
+		if player.y + player.speed > LOW_LIMIT then
+			player.y = LOW_LIMIT
 			altitude_flag = true
 		else
 			player.y += player.speed
@@ -61,19 +59,22 @@ function _update()
 	end
 
 	--game states--
-	if player.health < 1 then
+	if player.health < 1 and game_over == false then
+		-- set game over time to gametime when the game is over
+		game_over_time = gametime
 		game_over = true
 	end
-	if btn(5) and game_over then
+	if btn(BTN_X) and game_over then
 		run()
 	end
 
 	--time--
+	--update gametime to the time since game start every frame
 	gametime = time() - starttime
-	if previous_update_time % 10 > gametime % 10 then
+	if previous_update_time % SPAWN_RATE_COW > gametime % SPAWN_RATE_COW then
 		add(cows, create_cow())
 	end
-	if previous_update_time % 5 > gametime % 5 then
+	if previous_update_time % SPAWN_RATE_FARMER > gametime % SPAWN_RATE_FARMER then
 		add(farmers, create_farmer())
 	end
 	previous_update_time = gametime

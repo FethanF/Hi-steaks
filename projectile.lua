@@ -1,12 +1,16 @@
 projectiles = {}
 
-function create_projectile(source_x, source_y, target_x, target_y)
+function create_bullet(source_x, source_y, target_x, target_y)
+    return create_projectile(1, 5, source_x, source_y, target_x, target_y)
+end
+
+function create_projectile(speed, sprite, source_x, source_y, target_x, target_y)
     local projectile = {
-        x=0,
-        y=0,
-        speed=1,
+        x=source_x,
+        y=source_y,
+        speed=speed,
         rise_run=calc_unit_vector(source_x, source_y, target_x, target_y),
-        sp=05
+        sp=sprite
     }
     add(projectiles, projectile)
     return projectile

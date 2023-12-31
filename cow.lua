@@ -11,7 +11,7 @@ function create_cow()
 		speed = rnd(0.3) + 0.3,
 		fx = false,
 		fy = false,
-		sp = 2,
+		sp = SPR_COW,
 		abducted = false,
 		dead = false,
 		--false==left

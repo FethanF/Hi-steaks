@@ -14,6 +14,8 @@ __lua__
 #include _init.lua
 #include projectile.lua
 #include menus.lua
+#include constants.lua
+#include sprites.lua
 
 
 

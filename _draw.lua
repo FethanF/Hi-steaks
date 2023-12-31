@@ -6,7 +6,7 @@ end
 function draw_beam()
 	if beam_on then
 		for i = 0, 7 do
-			spr(9, player.x - 4, player.y + 7 + i * 16, 2, 2)
+			spr(SPR_BEAM, player.x - 4, player.y + 7 + i * 16, 2, 2)
 		end
 	end
 end
@@ -19,22 +19,22 @@ function _draw()
 		draw_beam()
 		draw_ground()
 		-- draw player -- 
-		spr(1, player.x, player.y, 1, 1, player.fx, player.fy, player.sp)
+		spr(SPR_PLAYER, player.x, player.y, 1, 1, player.fx, player.fy)
 
 		-- drawing cows --
 		for _, cow in ipairs(cows) do
 			if cow.dead then
-				spr(12, cow.x, cow.y, 1, 1, cow.dir, cow.fy, cow.sp)
+				spr(SPR_COW_DEAD, cow.x, cow.y, 1, 1, cow.dir, cow.fy)
 			else
-				spr(2, cow.x, cow.y, 1, 1, cow.dir, cow.fy, cow.sp)
+				spr(SPR_COW, cow.x, cow.y, 1, 1, cow.dir, cow.fy)
 			end
 		end
 		--draw farmers-
 		for _, farmer in ipairs(farmers) do
 			if farmer.dead then
-				spr(04, farmer.x, farmer.y - 1, 1, 1, farmer.dir, farmer.fy, farmer.sp)
+				spr(SPR_FARMER_DEAD, farmer.x, farmer.y - 1, 1, 1, farmer.dir, farmer.fy)
 			else
-				spr(03, farmer.x, farmer.y - 1, 1, 1, farmer.dir, farmer.fy, farmer.sp)
+				spr(SPR_FARMER, farmer.x, farmer.y - 1, 1, 1, farmer.dir, farmer.fy)
 			end
 		end
 		-- low limit warning --
@@ -53,20 +53,23 @@ function _draw()
 
 		--draw health bar--
 		if player.health == 3 then
-			spr(32, 112, 40, 2, 2)
+			spr(SPR_HEALTH_3, 112, 40, 2, 2)
 		end
 		if player.health == 2 then
-			spr(34, 112, 40, 2, 2)
+			spr(SPR_HEALTH_2, 112, 40, 2, 2)
 		end
 		if player.health == 1 then
-			spr(36, 112, 40, 2, 2)
+			spr(SPR_HEALTH_1, 112, 40, 2, 2)
 		end
 	else
 		--game end--
 		if game_over then
 			print("your score:"..score, 34, 85, 11)
 			sspr(12, 44, 26, 5, 25, 56, 78, 15)
-			print("press X to continue...", 20, 100, 12)
+			--make text blink every other half second
+			if (gametime - game_over_time) % 1 > 0.5 then
+				print("press X to continue...", 20, 100, 11)
+			end
 		end
 	end
 end

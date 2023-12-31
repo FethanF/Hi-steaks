@@ -6,17 +6,11 @@ function _init()
 	-- seconds since game start
 	gametime = 0
 
-	-- the lowest point the ufo can go
-	lowlimit = 80
-
 	-- flag that you cant go lower
 	altitude_flag = false
 
 	--how many cows have you sucked the spots out of
 	score = 0
-
-	--half the width of the abduction beam
-	beam_half_width = 8
 
 	--is the beam currently on
 	beam_on = false
@@ -28,7 +22,7 @@ function _init()
 		y = 63,
 		fx = false,
 		fy = false,
-		sp = 1,
+		sp = SPR_PLAYER,
 		--relative to top left of sprite--
 		collider = {
 			-- top left --
@@ -70,9 +64,9 @@ end
 
 function is_in_beam(object)
 	--if the object is to the left of the right of the beam
-	return object.x < player.x + beam_half_width 
+	return object.x < player.x + BEAM_HALF_WIDTH 
 	--if the object is to the right of the left of the beam
-	and object.x > player.x - beam_half_width
+	and object.x > player.x - BEAM_HALF_WIDTH
 	--check if object is lower than player
 	and object.y > player.y + 6 
 end
