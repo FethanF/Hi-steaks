@@ -7,7 +7,16 @@ function _init()
 	gametime = 0
 
 	-- flag that you cant go lower
-	altitude_flag = false
+	low_flag = false
+
+	-- flag that you cant go higher
+	high_flag = false
+
+	-- flag that you cant go more right
+	right_flag = false
+
+	-- flag that you cant go more left
+	left_flag = false
 
 	--how many cows have you sucked the spots out of
 	score = 0

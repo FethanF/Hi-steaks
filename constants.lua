@@ -1,5 +1,8 @@
--- the lowest point the ufo can go
+-- edges of map for ufo
 LOW_LIMIT = 80
+HIGH_LIMIT = -3
+RIGHT_LIMIT = 120
+LEFT_LIMIT = -1
 
 
 --half the width of the abduction beam

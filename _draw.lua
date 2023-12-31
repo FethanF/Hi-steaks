@@ -46,9 +46,24 @@ function _draw()
 			end
 		end
 		-- low limit warning --
-		if altitude_flag then
+		if low_flag then
 			print("too low! too low!", 32, 40, 8)
-			altitude_flag = false
+			low_flag = false
+		end
+		-- high limit warning --
+		if high_flag then
+			print("too high! too high!", 32, 40, 8)
+			high_flag = false
+		end
+		-- right limit warning --
+		if right_flag then
+			print("too far east!", 32, 40, 8)
+			right_flag = false
+		end
+		-- left limit warning --
+		if left_flag then
+			print("too far west!", 32, 40, 8)
+			left_flag = false
 		end
 		-- draw projectiles --
 		for _, projectile in ipairs(projectiles) do

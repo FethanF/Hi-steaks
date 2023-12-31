@@ -32,21 +32,36 @@ function _update()
 
 	-- x movement --
 	if btn(➡️) then
-		player.x += player.speed
-		player.fx = false
+		if player.x + player.speed > RIGHT_LIMIT then
+			player.x = RIGHT_LIMIT
+			right_flag = true
+		else
+			player.x += player.speed
+			player.fx = false
+		end
 	end
 	if btn(⬅️) then
-		player.x -= player.speed
-		player.fx = true
+		if player.x - player.speed < LEFT_LIMIT then
+			player.x = LEFT_LIMIT
+			left_flag = true
+		else
+			player.x -= player.speed
+			player.fx = true
+		end
 	end
 	-- y movement --
 	if btn(⬆️) then
-		player.y -= player.speed
+		if player.y - player.speed < HIGH_LIMIT then
+			player.y = HIGH_LIMIT
+			high_flag = true
+		else
+			player.y -= player.speed
+		end
 	end
 	if btn(⬇️) then
 		if player.y + player.speed > LOW_LIMIT then
 			player.y = LOW_LIMIT
-			altitude_flag = true
+			low_flag = true
 		else
 			player.y += player.speed
 		end
