@@ -37,6 +37,14 @@ function _draw()
 				spr(SPR_FARMER, farmer.x, farmer.y - 1, 1, 1, farmer.dir, farmer.fy)
 			end
 		end
+		--draw cops --
+		for _, cop in ipairs(cops) do
+			if cop.dead then
+				spr(SPR_COP_DEAD, cop.x, cop.y - 1, 1, 1, cop.dir, cop.fy)
+			else
+				spr(SPR_COP, cop.x, cop.y - 1, 1, 1, cop.dir, cop.fy)
+			end
+		end
 		-- low limit warning --
 		if altitude_flag then
 			print("too low! too low!", 32, 40, 8)
@@ -64,11 +72,11 @@ function _draw()
 	else
 		--game end--
 		if game_over then
-			print("your score:"..score, 34, 85, 11)
+			print("your score:"..score, 34, 82, 11)
 			sspr(12, 44, 26, 5, 25, 56, 78, 15)
 			--make text blink every other half second
 			if (gametime - game_over_time) % 1 > 0.5 then
-				print("press X to continue...", 20, 100, 11)
+				print("press X to play again...", 15, 100, 11)
 			end
 		end
 	end

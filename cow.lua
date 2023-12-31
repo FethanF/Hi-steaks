@@ -24,6 +24,7 @@ end
 function update_cow(cow)
 	if cow.dead then
 		delete_cow(cow)
+		kills += 1
 	end
 	--move the cow up when abducted
 	if cow.abducted then
@@ -33,6 +34,7 @@ function update_cow(cow)
 		--if cow is roughly at player height bye bye cow--
 		if cow.y <= player.y + 6 and cow.y >= player.y + 3 then
 			delete_cow(cow)
+			kills += 1
 			score += 1
 		end
 	else

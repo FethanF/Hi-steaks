@@ -8,6 +8,9 @@ function _update()
 		for _, farmer in ipairs(farmers) do
 			farmer.abducted = is_in_beam(farmer)
 		end
+		for _, cop in ipairs(cops) do
+			cop.abducted = is_in_beam(cop)
+		end
 	else
 		-- if space is released, release abducted cows -- --
 		for _, cow in ipairs(cows) do
@@ -18,6 +21,11 @@ function _update()
 		for _, farmer in ipairs(farmers) do
 			if farmer.abducted then
 				farmer.abducted = false
+			end
+		end
+		for _, cop in ipairs(cops) do
+			if cop.abducted then
+				cop.abducted = false
 			end
 		end
 	end
@@ -53,6 +61,11 @@ function _update()
 		update_farmer(farmer)
 	end
 
+	-- cop movement --
+	for _, cop in ipairs(cops) do
+		update_cop(cop)
+	end
+
 	--projectile movement--
 	for _, projectile in ipairs(projectiles) do
 		update_projectile(projectile)
@@ -76,6 +89,9 @@ function _update()
 	end
 	if previous_update_time % SPAWN_RATE_FARMER > gametime % SPAWN_RATE_FARMER then
 		add(farmers, create_farmer())
+	end
+	if previous_update_time % SPAWN_RATE_COP > gametime % SPAWN_RATE_COP and kills>= cop_spawn_min_kill then
+		add(cops, create_cop())
 	end
 	previous_update_time = gametime
 end

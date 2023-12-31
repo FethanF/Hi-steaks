@@ -12,6 +12,9 @@ function _init()
 	--how many cows have you sucked the spots out of
 	score = 0
 
+	--how many things have you abducted/killed
+	kills = 0
+
 	--is the beam currently on
 	beam_on = false
 
@@ -41,9 +44,9 @@ function _init()
 				y2 = self.y + self.collider.y2
 			}
 			-- its between the top of the box and the bottom of the box.
-			local is_between_top_and_bottom = y>absolute_player_collider.y1 and y<absolute_player_collider.y2
+			local is_between_top_and_bottom = y>=absolute_player_collider.y1 and y<=absolute_player_collider.y2
 			--and its between the right and left
-			local is_between_right_and_left = x>absolute_player_collider.x1 and x<absolute_player_collider.x2
+			local is_between_right_and_left = x>=absolute_player_collider.x1 and x<=absolute_player_collider.x2
 
 			local is_in_box = is_between_top_and_bottom and is_between_right_and_left
 			return is_in_box
@@ -60,6 +63,8 @@ function _init()
 		create_farmer(),
 		create_farmer()
 	}
+
+	cops = {}
 end
 
 function is_in_beam(object)

@@ -4,6 +4,10 @@ function create_bullet(source_x, source_y, target_x, target_y)
     return create_projectile(1, 5, source_x, source_y, target_x, target_y)
 end
 
+function create_cop_bullet(source_x, source_y, target_x, target_y)
+    return create_projectile(1.2, 5, source_x, source_y, target_x, target_y)
+end
+
 function create_projectile(speed, sprite, source_x, source_y, target_x, target_y)
     local projectile = {
         x=source_x,

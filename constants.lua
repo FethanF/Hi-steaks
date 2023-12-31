@@ -15,3 +15,4 @@ BTN_X = 5
 --Spawn Rates (seconds)--
 SPAWN_RATE_COW = 10
 SPAWN_RATE_FARMER = 5
+SPAWN_RATE_COP = 5
